@@ -1,14 +1,16 @@
 .form {
+    margin: 16px auto;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 24px;
+    width: 320px;
 }
 
 .input {
-    width: 312px;
-    background-color: #434343;
+    width: 320px;
+    background-color: #242424;
     border: none;
-    border-bottom: 1px solid #ffffffd5;
+    border-bottom: 1px solid #ffffff9d;
     font-size: 18px;
     padding: 4px;
 }
@@ -32,14 +34,4 @@
 .errorMsg {
     text-align: left;
     color: rgb(254, 81, 81);
-}
-
-.submitBtn {
-    background-color: #fff;
-    color: #000;
-    margin-top: 24px;
-}
-
-.submitBtn:hover {
-    background-color: #dfdfdf;
 }

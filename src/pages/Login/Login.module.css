@@ -1,0 +1,22 @@
+.container {
+    margin-top: 20px;
+}
+
+.navLink {
+    text-align: center;
+    display: block;
+}
+
+.link {
+    color: #ffffff9d;
+    text-decoration: underline;
+}
+
+.link:hover,
+link:focus {
+    color: #fff;
+}
+
+.title {
+    text-align: center;
+}

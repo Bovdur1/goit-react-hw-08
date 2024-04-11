@@ -1,7 +1,7 @@
 import css from './SearchBox.module.css';
 import { useId } from 'react';
 import { useDispatch } from 'react-redux';
-import { changeFilter } from '../../redux/filtersSlice';
+import { changeFilter } from '../../redux/filters/slice';
 
 const SearchBox = ({ title }) => {
   const searchFieldId = useId();
@@ -19,6 +19,7 @@ const SearchBox = ({ title }) => {
         }
         id={searchFieldId}
         className={css.search}
+        placeholder="Search"
       />
     </>
   );

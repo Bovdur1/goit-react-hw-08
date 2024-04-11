@@ -2,32 +2,78 @@ import { FaUser } from 'react-icons/fa6';
 import { FaPhoneAlt } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import css from './Contact.module.css';
-import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsOps';
+import { useState } from 'react';
+import EditContactForm from '../EditContactForm/EditContactForm';
+import { BsThreeDotsVertical } from 'react-icons/bs';
+import { MdDelete } from 'react-icons/md';
+import { MdEdit } from 'react-icons/md';
 
-const Contact = ({ id, name, number }) => {
-  const dispatch = useDispatch();
-
-  const handleDelete = () => dispatch(deleteContact(id));
+const Contact = ({ id, name, number, openModal }) => {
+  const [isOpenEditForm, setIsOpenEditForm] = useState(false);
+  const [isOpenContactMenu, setIsOpenContactMenu] = useState(false);
 
   return (
     <>
-      {/* Розмітка даних контакту */}
-      <div className={css.wrapper}>
-        <div className={css.contactData}>
-          <FaUser className={css.icon} />
-          <p>{name}</p>
-        </div>
-        <div className={css.contactData}>
-          <FaPhoneAlt className={css.icon} />
-          <p>{number}</p>
-        </div>
-      </div>
+      {isOpenEditForm ? (
+        <EditContactForm
+          id={id}
+          name={name}
+          number={number}
+          onClose={setIsOpenEditForm}
+        />
+      ) : (
+        // CONTACT INFO
 
-      {/* Кнопка видалення контакту */}
-      <button type="button" className={css.deleteBtn} onClick={handleDelete}>
-        Delete
-      </button>
+        <div className={css.container}>
+          <div className={css.wrapper}>
+            <div className={css.contactData}>
+              <FaUser className={css.icon} />
+              <p>{name}</p>
+            </div>
+            <div className={css.contactData}>
+              <FaPhoneAlt className={css.icon} />
+              <p>{number}</p>
+            </div>
+          </div>
+
+          <button
+            className={css.contactMenuBtn}
+            onClick={() => setIsOpenContactMenu(!isOpenContactMenu)}
+          >
+            <BsThreeDotsVertical />
+          </button>
+
+          {isOpenContactMenu && (
+            // CONTACT MENU
+
+            <div className={css.menu}>
+              <button
+                type="button"
+                className={css.option}
+                onClick={() => {
+                  openModal(id);
+                  setIsOpenContactMenu(!isOpenContactMenu);
+                }}
+              >
+                <MdDelete />
+                <span>Delete</span>
+              </button>
+
+              <button
+                type="button"
+                className={css.option}
+                onClick={() => {
+                  setIsOpenEditForm(true);
+                  setIsOpenContactMenu(!isOpenContactMenu);
+                }}
+              >
+                <MdEdit />
+                <span>Edit</span>
+              </button>
+            </div>
+          )}
+        </div>
+      )}
     </>
   );
 };

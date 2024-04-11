@@ -3,7 +3,7 @@ import { useId } from 'react';
 import * as Yup from 'yup';
 import css from './ContactForm.module.css';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsOps';
+import { addContact } from '../../redux/contacts/operations';
 
 const initialValues = {
   name: '',
@@ -22,8 +22,6 @@ const contactSchema = Yup.object().shape({
 });
 
 const ContactForm = () => {
-  const nameFieldId = useId();
-  const numberFieldId = useId();
   const dispatch = useDispatch();
 
   const handleSubmit = (value, action) => {
@@ -40,13 +38,10 @@ const ContactForm = () => {
       <Form className={css.form}>
         {/* Поле для введення ім'я */}
         <div className={css.wrapper}>
-          <label htmlFor={nameFieldId} className={css.label}>
-            Name
-          </label>
           <Field
             type="text"
             name="name"
-            id={nameFieldId}
+            placeholder="Name"
             className={css.input}
           />
           <ErrorMessage name="name" component="span" className={css.errorMsg} />
@@ -54,13 +49,10 @@ const ContactForm = () => {
 
         {/* Поле для введення номеру */}
         <div className={css.wrapper}>
-          <label htmlFor={numberFieldId} className={css.label}>
-            Number
-          </label>
           <Field
             type="text"
             name="number"
-            id={numberFieldId}
+            placeholder="Number"
             className={css.input}
           />
           <ErrorMessage

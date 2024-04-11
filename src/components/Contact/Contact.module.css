@@ -10,6 +10,51 @@
     align-items: center;
 }
 
-.deleteBtn {
+.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+}
+
+.contactMenuBtn {
+    padding: 0;
+    background-color: transparent;
+    font-size: 20px;
+    transition: transform 250ms;
+}
+
+.contactMenuBtn:hover,
+.contactMenuBtn:focus {
+    transform: scale(1.1);
+    border: none;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    width: 160px;
+    position: absolute;
+    top: 0;
+    right: 16px;
+}
+
+.option {
     height: 40px;
+    background-color: #fff;
+    color: #000;
+    overflow: hidden;
+}
+
+.option:hover,
+option:focus {
+    background-color: #dcdcdc;
+}
+
+.option:first-child {
+    border-radius: 10px 10px 0 0;
+}
+
+.option:last-child {
+    border-radius: 0 0 10px 10px;
 }

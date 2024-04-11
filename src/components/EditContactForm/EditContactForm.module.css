@@ -1,0 +1,78 @@
+.form {
+    display: flex;
+    gap: 18px;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input {
+    background-color: #434343;
+    border: none;
+    border-bottom: 1px solid #ffffffd5;
+    font-size: 16px;
+    padding: 4px;
+}
+
+.input::placeholder {
+    color: #ffffff9d;
+    font-size: 16px;
+}
+
+.input:focus,
+.input:hover {
+    outline: none;
+    border-bottom: 1px solid #fff;
+}
+
+.input:focus::placeholder,
+.input:hover::placeholder {
+    color: #fff
+}
+
+.errorMsg {
+    text-align: left;
+    color: rgb(254, 81, 81);
+}
+
+.wrapper {
+    display: flex;
+    align-items: end;
+    gap: 8px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px
+}
+
+.closeBtn {
+    position: absolute;
+    background-color: transparent;
+    padding: 0;
+    font-size: 24px;
+    top: 0;
+    right: 0;
+    border: none;
+}
+
+.closeBtn:focus,
+.closeBtn:hover {
+    border: none;
+    outline: none;
+    transform: scale(1.1);
+
+}
+
+.editBtn {
+    color: #000;
+    background-color: #fff;
+    height: 40px;
+    margin-right: 32px;
+}
+
+.editBtn:hover,
+.editBtn:focus {
+    background-color: #dcdcdc;
+}

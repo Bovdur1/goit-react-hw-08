@@ -1,0 +1,21 @@
+.nav {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+}
+
+.navLink {
+    position: relative;
+}
+
+.navLinkActive::after {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    content: '';
+    height: 3px;
+    width: 100%;
+    background-color: #e4e4e471;
+    border-radius: 4px;
+}
