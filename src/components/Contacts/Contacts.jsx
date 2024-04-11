@@ -1,9 +1,9 @@
-import ContactForm from '../../components/ContactForm/ContactForm';
-import ContactList from '../../components/ContactList/ContactList';
-import SearchBox from '../../components/SearchBox/SearchBox';
-import DeleteModal from '../../components/DeleteModal/DeleteModal';
-import Loader from '../../components/Loader/Loader';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import ContactForm from '../ContactForm/ContactForm';
+import ContactList from '../ContactList/ContactList';
+import SearchBox from '../SearchBox/SearchBox';
+import DeleteModal from '../DeleteModal/DeleteModal';
+import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';

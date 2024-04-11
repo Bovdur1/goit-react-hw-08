@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
+import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import css from './Registration.module.css';
 
 const Registration = () => {

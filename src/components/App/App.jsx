@@ -10,11 +10,9 @@ import RestrictedRoute from '../RestrictedRoute';
 import PrivateRoute from '../PrivateRoute';
 
 const HomePage = lazy(() => import('../../pages/Home/Home'));
-const LoginPage = lazy(() => import('../../pages/Login/Login'));
-const RegisterPage = lazy(() =>
-  import('../../pages/Registration/Registration')
-);
-const ContactsPage = lazy(() => import('../../pages/Contacts/Contacts'));
+const LoginPage = lazy(() => import('../Login/Login'));
+const RegisterPage = lazy(() => import('../Registration/Registration'));
+const ContactsPage = lazy(() => import('../Contacts/Contacts'));
 const NotFoundPage = lazy(() => import('../../pages/NotFoundPage'));
 
 function App() {
@@ -25,33 +23,32 @@ function App() {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
-    <>
-      {isRefreshing ? (
-        <Loader />
-      ) : (
-        <Layout>
-          <Suspense fallback={<Loader />}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route
-                path="/register"
-                element={<RestrictedRoute component={<RegisterPage />} />}
-              />
-              <Route
-                path="/login"
-                element={<RestrictedRoute component={<LoginPage />} />}
-              />
-              <Route
-                path="/contacts"
-                element={<PrivateRoute component={<ContactsPage />} />}
-              />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </Suspense>
-        </Layout>
-      )}
-    </>
+  return isRefreshing ? (
+    <Loader />
+  ) : (
+    <Layout>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/register"
+            redirectTo="/contacts"
+            element={<RestrictedRoute component={<RegisterPage />} />}
+          />
+          <Route
+            path="/login"
+            redirectTo="/contacts"
+            element={<RestrictedRoute component={<LoginPage />} />}
+          />
+          <Route
+            path="/contacts"
+            redirectTo="/login"
+            element={<PrivateRoute component={<ContactsPage />} />}
+          />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+    </Layout>
   );
 }
 
